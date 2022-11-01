@@ -1,0 +1,14 @@
+version: "3"
+services:
+  mongodb-container:
+    image: mongo:latest
+    container_name: "mongodb-container"
+    ports:
+      - 28000:27017
+  spring-boot-mongodb-container:
+    image: matrizlab/spring-boot-mongodb:latest
+    container_name: spring-boot-mongodb-container
+    ports:
+      - 8090:8081
+    links:
+      - mongodb-container

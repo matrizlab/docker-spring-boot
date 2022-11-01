@@ -3,6 +3,10 @@
 
 ### Start
 
+docker-compose up -d
+
+or
+
 run mongodb container
 
 ```zsh
