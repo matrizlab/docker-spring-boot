@@ -3,41 +3,33 @@
 
 ### Start
 
+mvn clean install -Dmaven.test.skip
+
+docker-compose build
+
 docker-compose up -d
 
-or
 
-run mongodb container
 
-```zsh
-docker run -d -p 28000:27017 --name mongodb-container mongo:latest
-```
-
-run spring boot docker container and link it with mongodb container
+#### check endpoint
 
 ```zsh
-docker run -p 8090:8081 --name spring-boot-mongodb-container-3 --link mongodb-container:mongo -d matrizlab/spring-boot-mongodb:v3
-```
-
-check endpoint
-
-```zsh
-curl -v http://localhost:8090/api/welcome
+curl -v http://localhost:8080/api/welcome
 ```
 
 ### Create
 
 ```zsh
 
-curl -X POST localhost:8090/api/categories -H 'Content-type:application/json' -d '{"name": "Category 1"}'
+curl -X POST localhost:8080/api/categories -H 'Content-type:application/json' -d '{"name": "Category 1"}'
 
-curl -X POST localhost:8090/api/product -H 'Content-type:application/json' -d '{"name": "Product 1", "description": "Desc 1", "price": "123.45", "categoryId": "635f84e60795e14871534960"}'
+curl -X POST localhost:8080/api/product -H 'Content-type:application/json' -d '{"name": "Product 1", "description": "Desc 1", "price": "123.45", "categoryId": "635f84e60795e14871534960"}'
 ```
 
 ### Read
 
 ```zsh
-curl -v localhost:8090/api/categories | json_pp
+curl -v localhost:8080/api/categories | json_pp
 
    {
       "id" : "635f84e60795e14871534960",
